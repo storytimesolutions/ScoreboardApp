@@ -1,0 +1,71 @@
+﻿<div class="row">
+    <h1>User Stories</h1>
+    <div class="well">
+        <h4>Filters:</h4>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    Work Item Number:<br />
+                    <input ng-model="search.wiNumber" type="text" />
+                </div>
+                <div class="col-md-3">
+                    Title: <br />
+                    <input ng-model="search.title" type="text" />
+                </div>
+                <div class="col-md-3">
+                    Iteration: <br />
+                    <select ng-model="search.iteration" ng-options="userstory.iteration as userstory.iteration for userstory in userstories | unique:'entity.iteration'">
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    Sprint: <br />
+                    <select ng-model="search.sprint" ng-options="userstory.sprint as userstory.sprint for userstory in userstories | unique:'sprint'">
+                    </select>
+                </div>
+            </div>
+            <!--<div class="row">
+                <div class="col-md-3">
+                    Needs Unit Tests?:<br />
+                    <input ng-model="a" type="text" />
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <table class="row table table-condensed table-hover">
+        <tr>
+            <th class="col-sm-2">Work Item Number</th>
+            <th class="col-sm-4">Title</th>
+            <th class="col-sm-1">Iteration</th>
+            <th class="col-sm-1">Sprint</th>
+            <th class="col-sm-4">Tests</th>
+        </tr>
+        <tr ng-repeat="userstory in userstories | filter:search">
+            <td>{{userstory.wiNumber}}</td>
+            <td>{{userstory.title}}</td>
+            <td>{{userstory.iteration}}</td>
+            <td>{{userstory.sprint}}</td>
+            <td>
+                <table class="table table-condensed">
+                    <tr>
+                        <th>Unit Tests</th>
+                        <th>Developer</th>
+                        <th>Selenium Tests</th>
+                    </tr>
+                    <tr ng-repeat="developer in developers">
+                        <td>
+                            <span class="label label-danger" ng-click="removeTestFromUserStory(userstories,userstory,'Unit Tests',developer)">-</span>
+                            <span class="badge">{{(userstory.unitTests | searchDeveloper: developer.$id).length}}</span>
+                            <span class="label label-success" ng-click="addTestToUserStory(userstories,userstory,'Unit Tests',developer)">+</span>
+                        </td>
+                        <td>{{developer.name}}</td>
+                        <td>
+                            <span class="label label-danger" ng-click="removeTestFromUserStory(userstories,userstory,'Selenium Tests',developer)">-</span>
+                            <span class="badge">{{(userstory.seleniumTests | searchDeveloper: developer.$id).length}}</span>
+                            <span class="label label-success" ng-click="addTestToUserStory(userstories,userstory,'Selenium Tests',developer)">+</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

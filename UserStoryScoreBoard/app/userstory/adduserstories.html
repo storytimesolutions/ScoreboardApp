@@ -1,0 +1,52 @@
+﻿<div class="row">
+    <div class="jumbotron">
+        <h1>Add User Story</h1>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="inputWINumber" class="col-sm-2 control-label">Work Item Number</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputWINumber" ng-model="userstory.inputWINumber">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputTitle" class="col-sm-2 control-label">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputTitle" ng-model="userstory.inputTitle">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputIteration" class="col-sm-2 control-label">Iteration</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputIteration" ng-model="userstory.inputIteration">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputSprint" class="col-sm-2 control-label">Sprint</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputSprint" ng-model="userstory.inputSprint">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" class="btn btn-primary" ng-click="addUserStory(userstory)" value="Add User Story"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table class="table table-condensed table-hover">
+        <tr>
+            <th>Work Item Number</th>
+            <th>Title</th>
+            <th>Iteration</th>
+            <th>Sprint</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="userstory in userstories">
+            <td>{{userstory.wiNumber}}</td>
+            <td>{{userstory.title}}</td>
+            <td>{{userstory.iteration}}</td>
+            <td>{{userstory.sprint}}</td> 
+            <td><div class="btn btn-danger" ng-click="removeUserStory(userstory)">Delete</div></td>
+        </tr>
+    </table>
+</div>

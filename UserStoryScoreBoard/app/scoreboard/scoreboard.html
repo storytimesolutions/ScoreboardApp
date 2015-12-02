@@ -1,0 +1,44 @@
+﻿<h2>Developer Champions</h2>
+<table class="table table-condensed table-bordered">
+    <tr>
+        <th>Rank</th>
+        <th>Developer</th>
+        <th>Number of Unit Tests</th>
+        <th>Number of Selenium Tests</th>
+        <th>Awesomeness Score</th>
+    </tr>
+    <tr ng-repeat="developer in developers | orderBy: awesomenessOfDevelopers:!reverse">
+        <td>{{$index+1}}</td>
+        <td>{{developer.name}}</td>
+        <td>{{getNumberOfUnitTestsForADeveloper(developer)}}</td>
+        <td>{{getNumberOfSeleniumTestsForADeveloper(developer)}}</td>
+        <td>{{awesomenessOfDevelopers(developer)}}</td>
+    </tr>
+</table>
+
+<hr/>
+
+<h2>Team WIG Status</h2>
+<table class="table table-condensed table-bordered">
+    <tr>
+        <th>Test Type</th>
+        <th>Number of User Stories with Test</th>
+        <th>Number of User Stories</th>
+        <th>Current Percentage</th>
+        <th>Percentage Complete out of 25 User Stories (For WIG)</th>
+    </tr>
+    <tr>
+        <td>Unit Tests</td>
+        <td>{{getNumberOfUserStoriesWithUnitTests(userstories)}}</td>
+        <td>{{userstories.length}}</td>
+        <td>{{getNumberOfUserStoriesWithUnitTests(userstories)/userstories.length | percentage:0}}</td>
+        <td style="background-color:yellow;">{{getNumberOfUserStoriesWithUnitTests(userstories)/(25*.5) | percentage:0}}</td>
+    </tr>
+    <tr>
+        <td>Selenium Tests</td>
+        <td>{{getNumberOfUserStoriesWithSeleniumTests(userstories)}}</td>
+        <td>{{userstories.length}}</td>
+        <td>{{getNumberOfUserStoriesWithSeleniumTests(userstories)/userstories.length | percentage:0}}</td>
+        <td style="background-color: yellow;">{{getNumberOfUserStoriesWithSeleniumTests(userstories)/(25*.5) | percentage:0}}</td>
+    </tr>
+</table>

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User Story Awesomeness</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/app.css" rel="stylesheet" />
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+    <!--<script src="Scripts/firebase.js"></script>-->
+    <!--<script src="Scripts/angularfire.js"></script>-->
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    
+    <script src="app/app.js"></script>
+    <script src="app/routing.js"></script>
+    <script src="app/filters.js"></script>
+
+    <script src="app/scoreboard/ScoreboardCtrl.js"></script>
+    <script src="app/userstory/UserStoriesCtrl.js"></script>
+    <script src="app/developer/DeveloperCtrl.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-include="'app/header.html'"></div>
+    <div class="container">
+        <div ng-view=""></div>
+    </div>
+</body>
+</html>
